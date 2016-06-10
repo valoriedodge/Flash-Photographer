@@ -1,0 +1,17 @@
+<h1><%= @photographer.first_name%> <%= @photographer.last_name %></h1>
+<% if @photographer.yrs_experience? %>
+<h6>Years of Experience: <%= @photographer.yrs_experience %></h6>
+<% end %>
+
+<% if @photographer.bio? %>
+  <p><%= @photographer.bio %> </p>
+<% end %>
+Email: <%= @photographer.email %></br>
+<% if @photographer.website? %>
+Website: <%= @photographer.website %></br>
+<% end %>
+
+
+<% if @photographer == current_photographer %>
+  <%= link_to "Edit Profile", edit_photographer_path(@photographer) %>
+<% end %>

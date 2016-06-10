@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FlashPhotographer</title>
+  <title>Flash Photographer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Find a Photographer", photographers_path %></li>
+      <li><%= link_to "About", about_path %></li>
 
-<%= yield %>
+    </ul>
+
+    <% if user_signed_in? %>
+      Signed in as User: <strong><%= current_user.email %></strong> |
+      <%= link_to 'Edit Account', edit_user_registration_path, :class => 'navbar-link' %> -
+
+     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    <% elsif photographer_signed_in?
+       photographer_signed_in? %>
+      Signed in as Photographer: <strong><%= current_photographer.email %></strong> |
+       <%= link_to "Profile", photographer_path(current_photographer.id) %> -
+       <%= link_to 'Edit Account', edit_photographer_registration_path, :class => 'navbar-link' %> -
+
+      <%= link_to "Sign Out", destroy_photographer_session_path, method: :delete, :class => 'navbar-link'  %>
+    <% else %>
+     <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
+     <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %> -
+     <%= link_to "Photographers", welcome_photographers_path %>
+    <% end %>
+
+  <div class="flash">
+    <% if flash[:notice] %>
+     <div class="alert alert-success">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <%= flash[:notice] %>
+     </div>
+    <% elsif flash.now[:alert] %>
+     <div class="alert alert-danger">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <%= flash.now[:alert] %>
+     </div>
+    <% elsif flash[:alert] %>
+     <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <%= flash[:alert] %>
+     </div>
+    <% end %>
+  </div>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
