@@ -31,7 +31,7 @@ class PhotographersController < ApplicationController
   private
 
   def photographer_params
-      params.permit(:bio, :website, :yrs_experience, :zip, :wttravel)
+      params.require(:photographer).permit(:bio, :website, :yrs_experience, :zip, :wttravel)
   end
 
   def get_ip

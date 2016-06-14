@@ -63,20 +63,25 @@ RSpec.describe PhotographersController, type: :controller do
       new_wttravel = true
       new_zip = Faker::Address::zip
 
-      put :update, id: my_photographer.id, photographer: {website: new_website, bio: new_bio, yrs_experience: new_yrs_experience, wttravel: new_wttravel, zip: new_zip}
+      put :update, id: my_photographer.id, photographer:  {website: new_website, bio: new_bio, yrs_experience: new_yrs_experience, wttravel: new_wttravel, zip: new_zip}
 
       updated_photographer = assigns(:photographer)
       expect(updated_photographer.id).to eq my_photographer.id
-      expect(updated_photographer.bio).to eq my_photographer.bio
-      expect(updated_photographer.website).to eq my_photographer.website
-      expect(updated_photographer.yrs_experience).to eq my_photographer.yrs_experience
-      expect(updated_photographer.zip).to eq my_photographer.zip
-      expect(updated_photographer.wttravel).to eq my_photographer.wttravel
+      expect(updated_photographer.bio).to eq new_bio
+      expect(updated_photographer.website).to eq new_website
+      expect(updated_photographer.yrs_experience).to eq new_yrs_experience
+      expect(updated_photographer.zip).to eq new_zip
+      expect(updated_photographer.wttravel).to eq new_wttravel
 
     end
 
+    it "assigns photographer to @photographers" do
+      put :update, id: my_photographer.id, photographer: {yrs_experience: "5"}
+      expect(assigns(:photographer)).to eq(my_photographer)
+    end
+
     it "returns http redirect" do
-      get :update, id: my_photographer.id, photographer: {}
+      get :update, id: my_photographer.id, photographer: {yrs_experience: "3"}
       expect(response).to redirect_to my_photographer
     end
 
@@ -89,7 +94,7 @@ RSpec.describe PhotographersController, type: :controller do
 
       put :update, id: my_photographer.id, photographer: {website: new_website, bio: new_bio, yrs_experience: new_yrs_experience, wttravel: new_wttravel, zip: new_zip}
 
-      expect(response).to redirect_to my_photographer
+      expect(response).to render_template :edit
     end
   end
 
