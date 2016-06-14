@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+
   def about
   end
 
@@ -6,5 +7,6 @@ class WelcomeController < ApplicationController
   end
 
   def index
+    @photographers = Photographer.all
   end
 end

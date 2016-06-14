@@ -1,6 +1,20 @@
-<font size="7"></br></font>
+<div class="jumbotron">
+  <h1><strong>Flash</br>
+    Photographer</strong></h1>
+    <h4>The easiest way to find a photographer</br>
+    <em>anywhere</em> for <strong>any event</strong>.</h4>
+</div>
 
-<font size="7"><strong>Flash</br>
-Photographer</strong></font>
-<h4>The easiest way to find a photographer</br>
-<em>anywhere</em> for <em>any event</em>.</h4>
+<div>
+  <h4>Photographers Near You: </h4>
+  <% @photographers.each do |photographer| %>
+    <h3><%= link_to "#{photographer.first_name} #{photographer.last_name}", photographer_path(id: photographer.id) %></h3>
+    <% if photographer.yrs_experience? %>
+      Years of Experience: <%= photographer.yrs_experience %>
+    <% end %>
+
+    <% if photographer.bio? %>
+      <p><%= photographer.bio %> </p>
+    <% end %>
+  <% end %>
+</div>

@@ -29,20 +29,17 @@ class DeviseCreatePhotographers < ActiveRecord::Migration
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
+
       t.string :first_name
       t.string :last_name
       t.float :yrs_experience
       t.integer :level
       t.string :website
       t.text :bio
-      t.string :street
-      t.string :city
-      t.string :state
-      t.string :country
-      t.float :zip_code
-      t.decimal :lat, :precision => 8, :scale => 6, :null => false
-      t.decimal :lng, :precision => 9, :scale => 6, :null => false
-      t.boolean :wttravel
+      t.string :zip
+      t.boolean :wttravel, default: false
+      t.references :location, index: true, foreign_key: true
+
       t.timestamps null: false
     end
 

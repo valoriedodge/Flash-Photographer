@@ -1,16 +1,17 @@
 <h1><%= @photographer.first_name%> <%= @photographer.last_name %></h1>
-<% if @photographer.yrs_experience? %>
 <h6>Years of Experience: <%= @photographer.yrs_experience %></h6>
-<% end %>
 
-<% if @photographer.bio? %>
-  <p><%= @photographer.bio %> </p>
-<% end %>
-Email: <%= @photographer.email %></br>
-<% if @photographer.website? %>
-Website: <%= @photographer.website %></br>
-<% end %>
+<h4>About <%= @photographer.first_name %></h4>
+<p><%= @photographer.bio %> </p>
 
+<div>
+  <p> Zip Code: <%= @photographer.zip %></p>
+  <p>Willing to travel? <%= @photographer.wttravel ? "Yes" : "No"  %></p>
+  <p>Email: <%= @photographer.email %></p>
+  <% if @photographer.website? %>
+    <p>Website: <%= @photographer.website %></p>
+  <% end %>
+</div>
 
 <% if @photographer == current_photographer %>
   <%= link_to "Edit Profile", edit_photographer_path(@photographer) %>

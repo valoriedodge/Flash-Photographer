@@ -1,8 +1,19 @@
 <h1><%= @photographer.first_name%> <%= @photographer.last_name %></h1>
 <%= form_for @photographer do |f| %>
+<div class="form-group">
+  <label for="yrs_experience">Years of experience</label>
+  <%= f.text_field :yrs_experience %>
+</div>
+
   <div class="form-group">
-    <%= f.label "Years of experience" %>
-    <%= f.number_field :yrs_experience %>
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :wttravel, class: 'checkbox' do %>
+      <%= f.check_box :wttravel %> Willing to travel?
+    <% end %>
   </div>
 
   <div class="form-group">
@@ -12,7 +23,7 @@
 
   <div class="field">
     <%= f.label :website %><br />
-    <%= f.text_field :website, class: 'form-control', placeholder: "Enter personal website url" %>
+    <%= f.text_field :website, class: 'form-control', placeholder: "Enter personal website url" %></br>
   </div>
 
   <%= f.submit "Save", class: 'btn btn-success' %>

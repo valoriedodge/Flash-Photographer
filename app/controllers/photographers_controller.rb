@@ -1,6 +1,10 @@
 class PhotographersController < ApplicationController
+  before_action :get_ip
+
+
   def index
     @photographers = Photographer.all
+    #@photographers.sort_by{|s| s.distance_to()}
   end
 
   def show
@@ -27,6 +31,10 @@ class PhotographersController < ApplicationController
   private
 
   def photographer_params
-      params.require(:photographer).permit(:bio, :website, :yrs_experience)
+      params.permit(:bio, :website, :yrs_experience, :zip, :wttravel)
+  end
+
+  def get_ip
+    #@ip_address = Geocoders::MultiGeocoder.geocode(request.remote_ip)
   end
 end
