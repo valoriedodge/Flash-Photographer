@@ -1,4 +1,13 @@
-<h1>All Photographers</h1>
+<h1>Find A Photographer</h1>
+<%= form_tag photographers_path, method: :get %>
+  <div class="form-group">
+    <label for="search_zip_code">Search by zip code: </label>
+    <%= text_field_tag :search_zip_code %>
+  <%= submit_tag "Search", class: 'btn btn-info' %>
+  </div>
+<h3>
+<%= @zip_code ? "Photographers located in #{@zip_code}" : "All Photographers" %>
+</h3>
 <% @photographers.each do |photographer| %>
   <h3><%= link_to "#{photographer.first_name} #{photographer.last_name}", photographer_path(id: photographer.id) %></h3>
   <% if photographer.yrs_experience? %>

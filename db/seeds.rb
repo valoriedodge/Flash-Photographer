@@ -22,18 +22,6 @@ end
 
 photographers = Photographer.all
 
-admin = User.create!(
-    email:    'admin@example.com',
-    password: 'helloworld'
-)
-
-premium = Photographer.create!(
-    first_name: 'premium',
-    last_name: 'photographer',
-    email:    'premium@example.com',
-    password: 'helloworld'
-)
-
 
 puts "Seed finished"
 puts "#{User.count} users created"
