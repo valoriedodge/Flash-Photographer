@@ -7,6 +7,7 @@ class Photographer < ActiveRecord::Base
   validates :last_name, length: { minimum: 2 }, presence: true
   validates :bio, length: { minimum: 5, maximum: 500 }, presence: true
   validates :zip, presence: true
+  validates :website, length: { minimum: 3 }
   validates :yrs_experience, presence: true, numericality: true
 
   belongs_to :location

@@ -6,34 +6,67 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <style>
+  /* Note: Try to remove the following lines to see the effect of CSS positioning */
+  
+  </style>
 </head>
 <body>
-  <div class="container">
-    <ul class="nav nav-tabs">
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="0">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand">Flash Photographer</div>
+    </div>
+    <ul class="nav navbar-nav">
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Find a Photographer", photographers_path %></li>
       <li><%= link_to "About", about_path %></li>
-
     </ul>
 
+    <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
-      Signed in as User: <strong><%= current_user.email %></strong> |
-      <%= link_to 'Edit Account', edit_user_registration_path, :class => 'navbar-link' %> -
-
-     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% elsif photographer_signed_in?
-       photographer_signed_in? %>
-      Signed in as Photographer: <strong><%= current_photographer.email %></strong> |
-       <%= link_to "Profile", photographer_path(current_photographer.id) %> -
-       <%= link_to 'Edit Account', edit_photographer_registration_path, :class => 'navbar-link' %> -
-
-      <%= link_to "Sign Out", destroy_photographer_session_path, method: :delete, :class => 'navbar-link'  %>
+      <li>Signed in as User: <strong><%= current_user.email %></strong></li>
+      <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+    <% elsif photographer_signed_in?%>
+      <li>Signed in as Photographer: <strong><%= current_photographer.email %></strong> </li>
+      <li><%= link_to "Profile", photographer_path(current_photographer.id) %></li>
+      <li><%= link_to "Edit Account", edit_photographer_registration_path%></li>
+      <li><%= link_to "Sign Out", destroy_photographer_session_path, method: :delete  %></li>
     <% else %>
-     <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
-     <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %> -
-     <%= link_to "Photographers", welcome_photographers_path %>
-    <% end %>
+     <li><%= link_to "Sign Up", new_user_registration_path%> </li>
+     <li><%= link_to "Sign In", new_user_session_path %> </li>
+     <li><a data-toggle="modal" data-target="#myModal">Photographers</a></li>
 
+
+     <div id="myModal" class="modal fade" role="dialog">
+       <div class="modal-dialog">
+
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">Welcome Photographers</h4>
+           </div>
+           <div class="modal-body">
+             <div class="center"
+             <p>Already a member of Flash Photographer?</p>
+             <%= link_to "Sign In", new_photographer_session_path, :class => 'btn btn-info'  %>
+              </br>
+              </br>
+             <p>Or join the fastest growing website for photographers:</p>
+             <%= link_to "Sign Up", new_photographer_registration_path, :class => 'btn btn-info'  %>
+           </div>
+         </div>
+
+       </div>
+
+     </div>
+   </div>
+    <% end %>
+  </div>
+</nav>
+
+<div class="container">
   <div class="flash">
     <% if flash[:notice] %>
      <div class="alert alert-success">
@@ -53,8 +86,8 @@
     <% end %>
   </div>
 
-    <%= yield %>
-  </div>
+  <%= yield %>
+</div>
 
 </body>
 </html>

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe PhotographersController, type: :controller do
-  let(:my_photographer) { FactoryGirl.create(:photographer)}
+  let(:my_photographer) { FactoryGirl.create(:photographer) }
+  let(:new_photographer) { FactoryGirl.create(:photographer) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -17,6 +18,40 @@ RSpec.describe PhotographersController, type: :controller do
      it "includes my_photographer in @photographers" do
       get :index
       expect(assigns(:photographers)).to include(my_photographer)
+    end
+
+    it "includes new_photographer in @photographers" do
+     get :index
+     expect(assigns(:photographers)).to include(new_photographer)
+   end
+  end
+
+  context "index with search" do
+    before do
+      new_photographer.zip = "94404"
+      new_photographer.save!
+    end
+    describe "GET #index" do
+      it "returns http success" do
+        get :index, search_zip_code: "94404"
+        expect(response).to have_http_status(:success)
+      end
+
+      it "renders the #index view" do
+         get :index, search_zip_code: "94404"
+         expect(response).to render_template :index
+       end
+
+       it "includes new_photographer in @photographers" do
+        get :index, search_zip_code: "94404"
+        expect(assigns(:photographers)).to include(new_photographer)
+      end
+
+      it "includes new_photographer in @photographers" do
+       get :index, search_zip_code: "94404"
+       expect(assigns(:photographers)).not_to include(my_photographer)
+     end
+
     end
   end
 
@@ -83,6 +118,20 @@ RSpec.describe PhotographersController, type: :controller do
     it "returns http redirect" do
       get :update, id: my_photographer.id, photographer: {yrs_experience: "3"}
       expect(response).to redirect_to my_photographer
+    end
+
+    it "doesn't update photographer with incorrect attributes" do
+      new_website = ""
+      put :update, id: my_photographer.id, photographer: {website: new_website}
+      expect(response).to render_template :edit
+    end
+
+    it "doesn't update photographer with incorrect attributes" do
+      new_website = Faker::Internet.url
+      new_bio = ""
+      put :update, id: my_photographer.id, photographer: {website: new_website, bio: new_bio}
+
+      expect(response).to render_template :edit
     end
 
     it "doesn't update photographer with incorrect attributes" do

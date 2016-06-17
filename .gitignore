@@ -18,3 +18,5 @@
 
 # Ignore application configuration
 /config/initializers/geokit_config.rb
+
+coverage

@@ -41,4 +41,5 @@ class PhotographersController < ApplicationController
   def get_ip
     #@ip_address = Geocoders::MultiGeocoder.geocode(request.remote_ip)
   end
+
 end

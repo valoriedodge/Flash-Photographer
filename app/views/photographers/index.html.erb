@@ -9,12 +9,14 @@
 <%= @zip_code ? "Photographers located in #{@zip_code}" : "All Photographers" %>
 </h3>
 <% @photographers.each do |photographer| %>
-  <h3><%= link_to "#{photographer.first_name} #{photographer.last_name}", photographer_path(id: photographer.id) %></h3>
-  <% if photographer.yrs_experience? %>
-    Years of Experience: <%= photographer.yrs_experience %>
-  <% end %>
+  <% if photographer.confirmed? %>
+    <h3><%= link_to "#{photographer.first_name} #{photographer.last_name}", photographer_path(id: photographer.id) %></h3>
+    <% if photographer.yrs_experience? %>
+      Years of Experience: <%= photographer.yrs_experience %>
+      <% end %>
 
-  <% if photographer.bio? %>
-    <p><%= photographer.bio %> </p>
-  <% end %>
-<% end %>
+      <% if photographer.bio? %>
+      <p><%= photographer.bio %> </p>
+      <% end %>
+  <%end%>
+<%end%>

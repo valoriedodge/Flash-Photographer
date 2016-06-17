@@ -1,9 +1,9 @@
 <h1><%= @photographer.first_name%> <%= @photographer.last_name %></h1>
 <%= form_for @photographer do |f| %>
-<div class="form-group">
-  <label for="yrs_experience">Years of experience</label>
-  <%= f.text_field :yrs_experience %>
-</div>
+  <div class="form-group">
+    <label for="yrs_experience">Years of experience</label>
+    <%= f.text_field :yrs_experience %>
+  </div>
 
   <div class="form-group">
     <%= f.label :zip %>

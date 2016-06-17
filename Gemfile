@@ -24,6 +24,10 @@ source 'https://rubygems.org'
  gem 'devise'
  gem 'geokit-rails', github: 'geokit/geokit-rails'
 
+ group :test do
+   gem 'simplecov', :require => false
+ end
+
  group :development, :test do
    gem 'byebug'
    gem 'spring'
