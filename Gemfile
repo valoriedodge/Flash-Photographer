@@ -23,6 +23,7 @@ source 'https://rubygems.org'
  gem 'pry'
  gem 'devise'
  gem 'geokit-rails', github: 'geokit/geokit-rails'
+ gem 'ratyrate'
 
  group :test do
    gem 'simplecov', :require => false

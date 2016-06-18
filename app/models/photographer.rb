@@ -20,4 +20,6 @@ class Photographer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   enum level: [:standard, :premium, :admin]
+
+  ratyrate_rateable "quality"
 end

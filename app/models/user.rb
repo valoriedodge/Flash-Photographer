@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :reviews
-  
+
   enum level: [:standard, :premium, :admin]
+
+  ratyrate_rater
 
 end

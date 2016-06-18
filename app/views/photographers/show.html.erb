@@ -13,8 +13,10 @@
   <% end %>
 </div>
 <div>
-  <% if @photographer.reviews.count >= 1 %>
+
   <h3>Reviews of <%=@photographer.first_name%></h3>
+  Overall Rating: <%= rating_for @photographer, 'quality', star: 5, disable_after_rate: false, cancel: false %>
+  <% if @photographer.reviews.count >= 1 %>
     <% @photographer.reviews.each do |review| %>
     "<%= review.comment %>"</br>
     <small>-<%= review.user.email %></small></br>
@@ -25,6 +27,7 @@
 <div>
 <% if current_user %>
   <h5>Write a review for <%=@photographer.first_name%>:</h5>
+  My rating: <%= rating_for_user @photographer, current_user, 'quality', star: 5%>
   <%= render 'reviews/form', review: Review.new, photographer: @photographer %>
 <%end%>
 </div>
