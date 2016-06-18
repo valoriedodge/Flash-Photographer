@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   resources :photographers, only: [:index, :show, :edit, :update]
 
+  resources :photographers, only: [] do
+      resources :reviews, only: [:create, :destroy]
+
+  end
+
   get 'about' => 'welcome#about'
   root 'welcome#index'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605201229) do
+ActiveRecord::Schema.define(version: 20160618002146) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "street"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 20160605201229) do
   add_index "photographers", ["location_id"], name: "index_photographers_on_location_id"
   add_index "photographers", ["reset_password_token"], name: "index_photographers_on_reset_password_token", unique: true
 
+  create_table "reviews", force: :cascade do |t|
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "photographer_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "reviews", ["photographer_id"], name: "index_reviews_on_photographer_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -75,6 +86,7 @@ ActiveRecord::Schema.define(version: 20160605201229) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "level"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

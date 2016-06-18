@@ -121,12 +121,6 @@ RSpec.describe PhotographersController, type: :controller do
     end
 
     it "doesn't update photographer with incorrect attributes" do
-      new_website = ""
-      put :update, id: my_photographer.id, photographer: {website: new_website}
-      expect(response).to render_template :edit
-    end
-
-    it "doesn't update photographer with incorrect attributes" do
       new_website = Faker::Internet.url
       new_bio = ""
       put :update, id: my_photographer.id, photographer: {website: new_website, bio: new_bio}

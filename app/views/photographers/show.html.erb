@@ -12,6 +12,22 @@
     <p>Website: <%= @photographer.website %></p>
   <% end %>
 </div>
+<div>
+  <% if @photographer.reviews.count >= 1 %>
+  <h3>Reviews of <%=@photographer.first_name%></h3>
+    <% @photographer.reviews.each do |review| %>
+    "<%= review.comment %>"</br>
+    <small>-<%= review.user.email %></small></br>
+    </br>
+    <% end %>
+  <% end %>
+</div>
+<div>
+<% if current_user %>
+  <h5>Write a review for <%=@photographer.first_name%>:</h5>
+  <%= render 'reviews/form', review: Review.new, photographer: @photographer %>
+<%end%>
+</div>
 
 <% if @photographer == current_photographer %>
   <%= link_to "Edit Profile", edit_photographer_path(@photographer) %>

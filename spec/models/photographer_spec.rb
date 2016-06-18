@@ -15,7 +15,6 @@ RSpec.describe Photographer, type: :model do
 
   it {is_expected.to validate_length_of(:first_name).is_at_least(2)}
   it {is_expected.to validate_length_of(:last_name).is_at_least(2)}
-  it {is_expected.to validate_length_of(:website).is_at_least(3)}
   it {is_expected.to validate_length_of(:bio).is_at_least(5)}
   it {is_expected.to validate_length_of(:bio).is_at_most(500)}
   it {is_expected.to validate_numericality_of(:yrs_experience)}
