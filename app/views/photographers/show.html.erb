@@ -18,6 +18,9 @@
     <% @photographer.reviews.each do |review| %>
     "<%= review.comment %>"</br>
     <small>-<%= review.user.email %></small></br>
+    <% if review.user == current_user %>
+      <small>-<%= link_to "Delete", [review.photographer, review], method: :delete %></br>
+    <%end%>
     </br>
     <% end %>
   <% end %>
