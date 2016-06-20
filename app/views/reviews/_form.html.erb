@@ -1,8 +1,23 @@
  <%= form_for [photographer, review] do |f| %>
+ <div class="rating pull-left">
+    <div class="form-group" display="inline-block">
+
+      <%#= f.text_field :rating, class: 'glphicons glyphicons-star-empty', type: "radio", value: 1 %>
+     <%#= radio_button_tag(:rating, 1) %>
+     <%= f.radio_button :rating, class: 'glyphicon glyphicon-star-empty', value: 1, type: "radio" %>
+     <%= f.radio_button :rating, class: 'glyphicon glyphicon-star-empty', value: 2 %>
+     <%= f.radio_button :rating, class: 'glyphicon glyphicon-star-empty', value: 3 %>
+     <%= f.radio_button :rating, class: 'glyphicon glyphicon-star-empty', value: 4 %>
+     <%= f.radio_button :rating, class: 'glyphicon glyphicon-star-empty', value: 5 %>
+
+     <%#= f.label :rating, class: 'glyphicon glyphicon-star-empty' %>
+
+   </div>
+ </div>
 
     <div class="form-group">
       <%= f.label :comment, class: 'sr-only' %>
-      <%= f.text_area :comment, class: 'form-control', placeholder: "Write a review" %>
+      <%= f.text_area :comment, rows: 4, class: 'form-control', placeholder: "Write a review" %>
     </div>
     <%= f.submit "Submit Review", class: 'btn btn-default pull-right' %>
   <% end %>
