@@ -1,3 +1,4 @@
+<div class="container">
 <h1><%= @photographer.first_name%> <%= @photographer.last_name %></h1>
 <h6>Years of Experience: <%= @photographer.yrs_experience %></h6>
 
@@ -35,3 +36,4 @@
 <% if @photographer == current_photographer %>
   <%= link_to "Edit Profile", edit_photographer_path(@photographer) %>
 <% end %>
+</div>

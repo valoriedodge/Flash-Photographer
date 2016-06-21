@@ -1,3 +1,5 @@
+
+<div class="container">
 <h1>Find A Photographer</h1>
 <%= form_tag photographers_path, method: :get %>
   <div class="form-group">
@@ -23,3 +25,4 @@
 <% if @zip_code %>
   <%= link_to "All Photographers", photographers_path %>
 <% end %>
+</div>
