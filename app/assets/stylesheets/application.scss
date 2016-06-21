@@ -20,3 +20,22 @@
  .center {
    text-align: center;
  }
+ .navbar {
+   background-color: #888A8A;
+   border-color: #888A8A;
+   color: #FFFFFF;
+ }
+
+.main {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+.jumbotron {
+  background: image-url('Boat.JPG') no-repeat
+}
