@@ -11,6 +11,7 @@ class Photographer < ActiveRecord::Base
 
   belongs_to :location
   has_many :reviews
+  has_one :specialties
 
   acts_as_mappable #through: :location
 

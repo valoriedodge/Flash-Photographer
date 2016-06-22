@@ -1,0 +1,17 @@
+<%= form_for @specialty do |f| %>
+
+   <div class="form-group">
+     <%= f.label :weddings, class: 'checkbox' do %>
+        <%= f.check_box :weddings %> Weddings
+     <% end %>
+     <%= f.label :portraits, class: 'checkbox' do %>
+        <%= f.check_box :weddings %> Portraits
+     <% end %>
+     <%= f.label :businesses, class: 'checkbox' do %>
+        <%= f.check_box :businesses %> Business Events
+     <% end %>
+     <%= f.label :other_specialty, class: 'sr-only' %>
+     <%= f.text_box :other_specialty, class: 'form-control', placeholder: "Specialty" %>
+   </div>
+   <%#= f.submit "Submit Review", class: 'btn btn-default pull-right' %>
+ <% end %>

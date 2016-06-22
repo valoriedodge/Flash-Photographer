@@ -5,17 +5,20 @@
 <h4>About <%= @photographer.first_name %></h4>
 <p><%= @photographer.bio %> </p>
 
-<div>
-  <p> Zip Code: <%= @photographer.zip %></p>
-  <p>Willing to travel? <%= @photographer.wttravel ? "Yes" : "No"  %></p>
-  <p>Email: <%= @photographer.email %></p>
+<div class="personal">
+  <p> Zip Code: <%= @photographer.zip %></br>
+  Willing to travel? <%= @photographer.wttravel ? "Yes" : "No"  %></p>
+  <p>Email: <%= @photographer.email %></br>
   <% if @photographer.website? %>
-    <p>Website: <%= @photographer.website %></p>
+    Website: <%= @photographer.website %>
   <% end %>
+  </p>
 </div>
-<div>
+</div>
+<div class="container">
   <% if @photographer.reviews.count >= 1 %>
   <h3>Reviews of <%=@photographer.first_name%></h3>
+  <div class="reviews">
     <% @photographer.reviews.each do |review| %>
     "<%= review.comment %>"</br>
     <small>-<%= review.user.email %></small></br>
@@ -24,6 +27,7 @@
     <%end%>
     </br>
     <% end %>
+  </div>
   <% end %>
 </div>
 <div>
@@ -32,7 +36,7 @@
   <%= render 'reviews/form', review: Review.new, photographer: @photographer %>
 <%end%>
 </div>
-
+<div>
 <% if @photographer == current_photographer %>
   <%= link_to "Edit Profile", edit_photographer_path(@photographer) %>
 <% end %>
