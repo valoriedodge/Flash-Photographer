@@ -5,25 +5,25 @@
       <div class="item active fill">
         <%= image_tag "Tables.jpg" %>
         <div class="carousel-caption">
-          <h2>Destination Weddings</h2>
+          <p>Destination Weddings</p>
         </div>
       </div>
       <div class="item fill">
         <%= image_tag "Baby.jpg" %>
         <div class="carousel-caption">
-          <h2>Newborns</h2>
+          <p>Newborns</p>
         </div>
       </div>
       <div class="item fill">
         <%= image_tag "Family20.jpg" %>
         <div class="carousel-caption">
-          <h2>Family Portraits</h2>
+          <p>Family Portraits</p>
         </div>
       </div>
       <div class="item fill">
         <%= image_tag "Vegetation.JPG" %>
         <div class="carousel-caption">
-          <h2>Real Estate</h2>
+          <p>Real Estate</p>
         </div>
       </div>
     </div>
@@ -31,28 +31,30 @@
 </div>
 
 <div class="heading">
+  <div class="container-section">
   <h1><strong>Flash</br>
     Photographer</strong></h1>
-    <h4>The easiest way to find a photographer <strong>anywhere</strong> for <em>anything</em>.</h4>
+    <h4>The easiest way to find a photographer <strong>anywhere</strong> for <em>any event</em>.</h4>
+  </div>
 </div>
 
 <div class="container">
 <div class="row">
-  <div class="col-md-4 center">
-    <div class="content center">
+  <div class="col-md-4">
+    <div class="content">
       <img src="images/Hands.jpg" alt="Weddings" style="width:250px;height:200px;">
       <h3>Weddings</h3
         <p>Engagements, Bridals, Ceremonies, Receptions. Find a photographer for your special day.</p>
     </div>
   </div>
-  <div class="col-md-4 center">
+  <div class="col-md-4">
     <div class="content">
       <img src="images/Boys.jpg" alt="Portraits" style="width:250px;height:200px;">
       <h3>Portraits</h3
         <p>Whether it's a new baby, a graduation, or any special occasion for your family, find a photographer that can capture that priceless moment.</p>
     </div>
   </div>
-  <div class="col-md-4 center">
+  <div class="col-md-4">
     <div class="content">
       <img src="images/Nursery.jpg" alt="Nursery" style="width:250px;height:200px;">
       <h3>Corporate Events</h3
@@ -63,7 +65,9 @@
 </div>
 
 <div class="photographers">
-  <h2>Photographers</h2></br>
-  <h4>Increase your business through joining a network of photographers. Thousands of users are searching for photographers, increase your clientele in minutes by creating a profile today!</h4>
-  <%= link_to "Sign Up!", new_photographer_registration_path  %>
+  <div class="container-section">
+    <h1>Photographers</h1>
+    <h4>Increase your business through joining a network of photographers. Thousands of users are searching for photographers, increase your clientele in minutes by creating a profile today!</h4>
+    <%= link_to "Sign Up!", new_photographer_registration_path  %>
+  </div>
 </div>

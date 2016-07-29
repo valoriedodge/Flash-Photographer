@@ -18,42 +18,44 @@
  @import "bootstrap";
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
   color: #3B3D3D;
+  margin:auto;
 }
 
 footer {
   position:fixed;
-   left:0px;
-   bottom:0px;
-   height:30px;
-   width:100%;
-   background:#999;
-   padding: 10px;
+  left:0px;
+  bottom:0px;
+  height:40px;
+  width:100%;
+  background:#999;
+  padding: 5px;
+  padding-left: 10px;
+  font-size: 20px;
 }
 
- .center {
-   text-align: center;
- }
  .navbar {
    background-color: #3B3D3D;
    border-color: #3B3D3D;
    width: 100%;
+   border-radius: 0px;
  }
- .row {
-   margin-left: auto;
-   margin-right: auto;
+ .navbar-inverse .navbar-nav > li > a{
+   color: white;
  }
-
-.main {
-  width: 100%;
-  height: auto;
-}
+ .navbar-inverse .navbar-nav > li > a:hover,
+ .navbar .navbar-brand,
+ .navbar .navbar-brand:hover{
+   color: #e6ffff;
+ }
 
 .col-md-4 {
-  margin-top: 30px;
+  margin-top: -25px;
   margin-bottom: 50px;
+  text-align: center;
 }
+
 .carousel {
   z-index: -99;
   margin-top: -20px;
@@ -65,43 +67,21 @@ footer {
   margin-top: -20px;
   max-height: 450px;
 }
-.carousel-inner > .item > a > img {
-    width: 100%;
-    margin-top: -20px;
-    max-height: 450px;
-
-    padding: 0px;
+.carousel > .carousel-inner > .item > a > img {
+  width: 100%;
+  margin-top: -20px;
+  max-height: 450px;
+  padding: 0px;
 }
 .carousel-caption {
-  font-size: 50px;
-  font-style: italic;
+  font-size: 65px;
+  font-family: 'Allura', cursive;
   text-align: left;
-}
-.fill {
-    width: 100%;
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+  position: absolute;
+  margin-left: 0px;
+  margin-bottom: 40px;
 }
 
-.containr {
-  background: no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.list {
-  background-color: #9ff1f1;
-}
-img {
-  margin: 0px;
-}
-.content {
-  width: 250px;
-}
 .heading {
   background-color: #C7F0ED;
   width: 100%;
